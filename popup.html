@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manager</title>
+        <script src="jquery-3.1.0.min.js"></script>
+        <script src="popup.js"></script>
+        <style>
+        #spendAmount{
+                /* border: 1px solid gray; */
+    background: cornflowerblue;
+    border: 0px;
+    color: white;
+    height: 28px;
+    width:100%;
+        }
+        ul{
+          list-style-type: none;
+          padding:0px;
+        }
+        li{
+            color:#fff;
+            margin-top:10px;
+        }
+        body{
+                width: 214px;
+        }
+        </style>
+    </head>
+    <body>
+  <div> <canvas id="glcanvas" width="0" height="0"></canvas></div>
+  <ul class="list">
+<li class="renderer"></li>
+<li class="vendor"></li>
+<li class="unmaskvendor"></li>
+<li class="unmaskrenderer"></li>
+  </ul>
+        <input id="spendAmount" type="submit" class="status" value="Enable"/>
+    </body>
+</html>
