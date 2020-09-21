@@ -2,12 +2,12 @@ $(function(){
 
   
     var statusVal=0;
-    $("body").css({"background":"red"});
+   // $("body").css({"background":"red"});
     $('#spendAmount').click(function(){
         console.log("hello")
       
        if(statusVal==1){
-        $("body").css({"background":"green"});
+        //$("body").css({"background":"green"});
         // alert(statusVal)
         chrome.runtime.sendMessage({action: "enableProxy"});
        statusVal=0;
@@ -43,7 +43,7 @@ $(function(){
         // alert(statusVal)
         chrome.runtime.sendMessage({action: "disableProxy"});
         statusVal=1;
-        $("body").css({"background":"red"});
+      //  $("body").css({"background":"red"});
        }
     });
 
