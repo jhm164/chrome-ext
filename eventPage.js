@@ -14,6 +14,15 @@ var config = {
     bypassList: ["abc.com"]
   }
 };
+
+ var config2 = {
+   mode: "pac_script",
+   pacScript: {
+     data: "function FindProxyForURL(url, host) {\n" +
+            "  return DIRECT;" +
+            "}"
+   }
+ };
 function storeProxySettings(keyName) {
   chrome.proxy.settings.get({ incognito: false }, function(config) {
     localStorage[keyName + "_proxy_settings"] = JSON.stringify(config);
@@ -34,19 +43,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     storeProxySettings("current");
   } else if (request.action == "disableProxy") {
     chrome.browserAction.setBadgeText({ text: "OFF" });
+    chrome.proxy.settings.set(
+     {value: config2, scope: 'regular'},
+     function() {
+       console.log("disabled")
+     });
   }
 });
 
-// var config = {
-//   mode: "pac_script",
-//   pacScript: {
-//     data: "function FindProxyForURL(url, host) {\n console.log(url,host);" +
-//            " if(host=='whatismyipaddress.com'){ return DIRECT;}else{return 'PROXY  203.176.129.69:8080';\n};" +
-//            "}"
-//   }
-// };
-// chrome.proxy.settings.set(
-//     {value: config, scope: 'regular'},
-//     function() {
-//       console.log("hello enabled")
-//     });
+
+
